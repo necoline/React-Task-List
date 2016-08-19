@@ -19,7 +19,7 @@ class FormApp extends React.Component {
     return (
       <div className="container">
         <form ref="form" onSubmit={this.addTaskInfo}>
-            <input ref="category" placeholder="Work, Peronal, Relationship" />
+            <input ref="category" placeholder="Work, Personal, Relationship" />
             <input ref="task" placeholder="Add your task" />
             <input ref="description" placeholder="add details for your task" />
             <button className="btn" onSubmit={this.addTaskInfo}>Submit</button>
