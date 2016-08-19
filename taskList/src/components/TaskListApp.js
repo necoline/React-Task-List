@@ -3,12 +3,17 @@ import FormApp from './FormApp';
 // import History from './History';
 // import PersonalBoard from './PersonalBoard';
 // import RelationshipBoard from './RelationshipBoardp';
-// import WorkBoard from './WorkBoard';
+import WorkBoard from './WorkBoard';
 
 class TaskListApp extends React.Component{
   constructor(props){
     super(props);
-    this.state = {id: 0, tasks: [], description: [], category: ['Work', 'Personal', 'Relationship'], commType: ['text', 'email', 'calender'] };
+    this.addTask = this.addTask.bind(this);
+    this.state = {id: 0, tasks: [], category: ['Work', 'Personal', 'Relationship'], commType: ['text', 'email', 'calender']
+    };
+  }
+  compnentDidMount() {
+    debugger
   }
 
 
@@ -27,8 +32,8 @@ addTask(task, description) {
     return (
       <div>
       <FormApp addTask={this.addTask} />
+      <WorkBoard tasks={this.state.tasks}/>
       {/* <PersonalBoard />
-      <WorkBoard />
       <RelationshipBoard />
       <History /> */}
       </div>

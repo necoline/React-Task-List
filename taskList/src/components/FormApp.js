@@ -3,7 +3,7 @@ import React from 'react';
 class FormApp extends React.Component {
   constructor(props) {
     super(props);
-    this.addTask = this.addTaskInfo.bind(this);
+    this.addTaskInfo = this.addTaskInfo.bind(this);
   }
 
   addTaskInfo(e) {
@@ -19,6 +19,7 @@ class FormApp extends React.Component {
       <form ref="form" onSubmit={this.addTaskInfo}>
           <input ref="task" placeholder="Add your task" />
           <input ref="description" placeholder="add details for your task" />
+          <button className="btn" onSubmit={this.addTaskInfo}>Submit</button>
       </form>
     )
   }
