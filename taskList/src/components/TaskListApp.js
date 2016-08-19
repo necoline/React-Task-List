@@ -35,17 +35,18 @@ addTask(task, description, category) {
     return (
       <div>
         <div>
-        <FormApp addTask={this.addTask} />
+          <FormApp addTask={this.addTask} />
         </div>
         <div className="row">
           <div className="col m4">
-          <WorkBoard tasks={this.state.tasks.filter( task => task.category === "personal")}/>
+            <h2>Personal Tasks</h2>
+            <WorkBoard tasks={this.state.tasks.filter( task => task.category === "personal")}/>
           </div>
           <div className="col m4">
-          <WorkBoard tasks={this.state.tasks.filter( task => task.category === "relationship")}/>
+            <WorkBoard tasks={this.state.tasks.filter( task => task.category === "relationship")}/>
           </div>
           <div className="col m4">
-          <WorkBoard tasks={this.state.tasks.filter( task => task.category === "work")}/>
+            <WorkBoard tasks={this.state.tasks.filter( task => task.category === "work")}/>
           </div>
         </div>
       {/* <History /> */}
