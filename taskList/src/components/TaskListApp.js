@@ -9,7 +9,11 @@ class TaskListApp extends React.Component{
   constructor(props){
     super(props);
     this.addTask = this.addTask.bind(this);
-    this.state = {id: 0, tasks: [], category: ['Work', 'Personal', 'Relationship'], commType: ['text', 'email', 'calender']
+    this.state = {id: 2,
+      tasks: [ {task : "personal task", description : "per desc", id : 0, category : "personal"},
+      {task :"relationship task", description : "resl  descript", id : 1, category : "relationship"}],
+       category : ['Work', 'Personal', 'Relationship'],
+       commType : ['text', 'email', 'calender']
     };
   }
   compnentDidMount() {
@@ -21,7 +25,7 @@ addTask(task, description) {
   let id = ++this.state.id;
     this.setState({
       tasks: [
-        {task, description, id},
+        {task, description, id, category: "work"},
         ...this.state.tasks
       ],
       id
@@ -31,11 +35,21 @@ addTask(task, description) {
   render() {
     return (
       <div>
-      <FormApp addTask={this.addTask} />
-      <WorkBoard tasks={this.state.tasks}/>
-      {/* <PersonalBoard />
-      <RelationshipBoard />
-      <History /> */}
+        <div>
+        <FormApp addTask={this.addTask} />
+        </div>
+        <div className="row">
+          <div className="col m4">
+          <WorkBoard tasks={this.state.tasks.filter( task => task.category === "personal")}/>
+          </div>
+          <div className="col m4">
+          <WorkBoard tasks={this.state.tasks.filter( task => task.category === "relationship")}/>
+          </div>
+          <div className="col m4">
+          <WorkBoard tasks={this.state.tasks.filter( task => task.category === "work")}/>
+          </div>
+        </div>
+      {/* <History /> */}
       </div>
     )
   }

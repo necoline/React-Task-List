@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
+        <div style={{height: "150px", padding: "20px", color: "white", backgroundColor: "#00838f"}}>
           <h2>The Relationship App</h2>
         </div>
         <TaskListApp />

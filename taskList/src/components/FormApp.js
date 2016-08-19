@@ -16,11 +16,13 @@ class FormApp extends React.Component {
 
   render(){
     return (
-      <form ref="form" onSubmit={this.addTaskInfo}>
-          <input ref="task" placeholder="Add your task" />
-          <input ref="description" placeholder="add details for your task" />
-          <button className="btn" onSubmit={this.addTaskInfo}>Submit</button>
-      </form>
+      <div className="container">
+        <form ref="form" onSubmit={this.addTaskInfo}>
+            <input ref="task" placeholder="Add your task" />
+            <input ref="description" placeholder="add details for your task" />
+            <button className="btn" onSubmit={this.addTaskInfo}>Submit</button>
+        </form>
+      </div>
     )
   }
 }
