@@ -9,9 +9,8 @@ class TaskListApp extends React.Component{
   constructor(props){
     super(props);
     this.addTask = this.addTask.bind(this);
-    this.state = {id: 2,
-      tasks: [ {task : "personal task", description : "per desc", id : 0, category : "personal"},
-      {task :"relationship task", description : "resl  descript", id : 1, category : "relationship"}],
+    this.state = {id: 0,
+      tasks: [],
        category : ['Work', 'Personal', 'Relationship'],
        commType : ['text', 'email', 'calender']
     };
@@ -21,11 +20,11 @@ class TaskListApp extends React.Component{
   }
 
 
-addTask(task, description) {
+addTask(task, description, category) {
   let id = ++this.state.id;
     this.setState({
       tasks: [
-        {task, description, id, category: "work"},
+        {task, description, id, category},
         ...this.state.tasks
       ],
       id
