@@ -9,6 +9,7 @@ class TaskListApp extends React.Component{
   constructor(props){
     super(props);
     this.addTask = this.addTask.bind(this);
+    this.taskComplete = this.taskComplete.bind(this);
     this.state = {
       id: 0,
       tasks: [],
@@ -31,7 +32,6 @@ addTask(task, description, category) {
 }
 
 taskComplete(id) {
-console.log("ThiS WORKS WELL!!!!")
   let oldTasks = this.state.tasks
   let newTasks = oldTasks.map(task => {
     if( task.id === id ) {

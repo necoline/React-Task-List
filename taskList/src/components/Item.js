@@ -7,6 +7,7 @@ const Item = ({ id, task, description, complete, taskComplete}) => (
   >
     {task}
   </li>
+
 )
 
 export default Item;
