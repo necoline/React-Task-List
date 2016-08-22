@@ -3,32 +3,45 @@ import FormApp from './FormApp';
 // import History from './History';
 // import PersonalBoard from './PersonalBoard';
 // import RelationshipBoard from './RelationshipBoardp';
-import WorkBoard from './WorkBoard';
+import Board from './Board';
 
 class TaskListApp extends React.Component{
   constructor(props){
     super(props);
     this.addTask = this.addTask.bind(this);
-    this.state = {id: 0,
+    this.state = {
+      id: 0,
       tasks: [],
-       category : ['Work', 'Personal', 'Relationship'],
-       commType : ['text', 'email', 'calender']
+      category : ['Work', 'Personal', 'Relationship'],
+      commType : ['text', 'email', 'calender']
     };
   }
-  compnentDidMount() {
-    debugger
-  }
+
 
 
 addTask(task, description, category) {
   let id = ++this.state.id;
     this.setState({
       tasks: [
-        {task, description, id, category},
+        {task, description, id, category, complete: false},
         ...this.state.tasks
       ],
       id
     })
+}
+
+taskComplete(id) {
+console.log("ThiS WORKS WELL!!!!")
+  let oldTasks = this.state.tasks
+  let newTasks = oldTasks.map(task => {
+    if( task.id === id ) {
+      return{
+          ...task,
+          complete: !task.complete
+      }
+    }
+  });
+  this.setState({ newTasks })
 }
 
   render() {
@@ -39,14 +52,16 @@ addTask(task, description, category) {
         </div>
         <div className="row">
           <div className="col m4">
-            <h2>Personal Tasks</h2>
-            <WorkBoard tasks={this.state.tasks.filter( task => task.category === "personal")}/>
+            <h2>Personal</h2>
+            <Board taskComplete={this.taskComplete} listItem={this.state.tasks.filter( task => task.category === "personal")}/>
           </div>
           <div className="col m4">
-            <WorkBoard tasks={this.state.tasks.filter( task => task.category === "relationship")}/>
+          <h2>Relationship</h2>
+            <Board taskComplete={this.taskComplete} listItem={this.state.tasks.filter( task => task.category === "relationship")}/>
           </div>
           <div className="col m4">
-            <WorkBoard tasks={this.state.tasks.filter( task => task.category === "work")}/>
+            <h2>Work</h2>
+            <Board taskComplete={this.taskComplete} listItem={this.state.tasks.filter( task => task.category === "work")}/>
           </div>
         </div>
       {/* <History /> */}
