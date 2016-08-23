@@ -32,16 +32,17 @@ addTask(task, description, category) {
 }
 
 taskComplete(id) {
-  let oldTasks = this.state.tasks
-  let newTasks = oldTasks.map(task => {
+  let tasks = this.state.tasks.map( (task) => {
     if( task.id === id ) {
       return{
           ...task,
           complete: !task.complete
       }
     }
+
+    return task;
   });
-  this.setState({ newTasks })
+  this.setState({ tasks });
 }
 
   render() {
